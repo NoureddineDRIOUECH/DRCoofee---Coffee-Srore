@@ -1,0 +1,65 @@
+.auth {
+    background-color: #FFF5E1;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-form {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #FFF;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form label {
+    margin-bottom: 10px;
+}
+
+.auth-form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-form button {
+    background-color: #D67F2E;
+    color: black;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.Inscription-Form{
+    display: flex;
+    justify-content: center;
+    background-color: #FFF5E1;
+}
+.auth-form inscri-form form{
+    margin: 10px;
+}
+
+
+
+
+
+
+
+

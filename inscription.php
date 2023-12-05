@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="inscription-connexion.css">
     <link rel="icon" href="Images/logoIcon.png" type="image/png">
+    <style>
+    .error-message {
+        color: #ff0000;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .sucsses-message {
+        color: #D67F2E;
+        margin-top: 10px;
+        text-align: center;
+    }
+    </style>
     <title>DRCoffee</title>
 </head>
 
@@ -19,7 +32,7 @@
         <nav class="navbar">
             <div class="logo">
                 <a href="home.html">
-                    <img src="/Images/logoIcon.png" alt="DRCoffee">
+                    <img src="Images/logoIcon.png" alt="DRCoffee">
                     <h1>DR</h1>
                     <h1 class="c">C</h1>
                     <h1>offee</h1>
@@ -52,33 +65,39 @@
                     <!-- <label for="login-password">Confirmer le Mot de passe*</label>
                     <input type="password" id="login-password" name="password" required> -->
                     <button type="submit" name="s_incrire">S'incrire</button>
+                    <div class="inscrption" style="margin-top: 20px; ">
+                        <p style="display: inline;">Vous avez deja un compte ? <a href="connexion.php"
+                                style="color: #D67F2E;">
+                                <p style="display: inline; color: #D67F2E;">Connectez-vous.</p>
+                            </a>
+                        </p>
+                    </div>
                 </form>
-                <?php                       
-                        $username = 'root';
-                        $password = "";
-                        $database = new PDO("mysql:host=localhost;dbname=DRCoffee;",$username , $password);
-                        if (isset($_POST["s_incrire"])) {
-                            $checkmail = $database->prepare("SELECT * FROM users WHERE email = :email");
-                            $email = $_POST["email"];
-                            $checkmail->bindParam(":email",$email);
-                            $checkmail->execute();
-                            if($checkmail->rowCount() > 0 ){
-                                echo "<div>Cet email adresse déja existe ):</div>";
-                            }else{
-                                $name = $_POST["name"];
-                                $password = $_POST["password"];
-                                $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code) VALUES (:name, :email, :password, false, :security_code)");
-                                $adduser->bindParam(":email",$email);
-                                $adduser->bindParam(":password",$password);
-                                $adduser->bindParam(":name",$name);
-                                $security_code = md5(date("h:m:s"));
-                                $adduser->bindParam(":security_code",$security_code);
-                                if ($adduser->execute()) {
-                                    echo "<div>Compte est crée avec succées :)</div>";
-                                    require_once "mail.php";
-                                    $mail->addAddress($email);
-                                    $mail->Subject = "Code de Verification DRCoffee";
-                                    $mail->Body = '<body style="font-family: \'Roboto\', sans-serif; background-color: #f4f4f4; color: #333; margin: 0; padding: 20px;">
+                <?php
+                $username = 'root';
+                $password = "";
+                $database = new PDO("mysql:host=localhost;dbname=DRCoffee;", $username, $password);
+                if (isset($_POST["s_incrire"])) {
+                    $checkmail = $database->prepare("SELECT * FROM users WHERE email = :email");
+                    $email = $_POST["email"];
+                    $checkmail->bindParam(":email", $email);
+                    $checkmail->execute();
+                    if ($checkmail->rowCount() > 0) {
+                        echo '<p class="error-message">Cet adresse mail existe déja.</p>';
+                    } else {
+                        $name = $_POST["name"];
+                        $password = $_POST["password"];
+                        $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code) VALUES (:name, :email, :password, false, :security_code)");
+                        $adduser->bindParam(":email", $email);
+                        $adduser->bindParam(":password", $password);
+                        $adduser->bindParam(":name", $name);
+                        $security_code = md5(date("h:m:s"));
+                        $adduser->bindParam(":security_code", $security_code);
+                        if ($adduser->execute()) {
+                            require_once "mail.php";
+                            $mail->addAddress($email);
+                            $mail->Subject = "Code de Verification DRCoffee";
+                            $mail->Body = '<body style="font-family: \'Roboto\', sans-serif; background-color: #f4f4f4; color: #333; margin: 0; padding: 20px;">
                                                         <div style="max-width: 600px; margin: 0 auto; background-color: #fff; border-radius: 5px; overflow: hidden; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                                                             <div style="background-color: #D67F2E; padding: 20px; text-align: center; color: #fff;">
                                                                 <h1 style="margin: 0;">DRCoffee</h1>
@@ -87,7 +106,7 @@
                                                                 <h2 style="color: #D67F2E;">Confirmation d\'Inscription</h2>
                                                                 <p>Merci de vous être inscrit sur DRCoffee. Veuillez cliquer sur le lien ci-dessous pour confirmer votre adresse e-mail :</p>
                                                                 <p style="text-align: center;">
-                                                                    <a href="http://localhost/DRCoffee/active.php?code='.$security_code.'". style="display: inline-block; background-color: #D67F2E; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Confirmer l\'Inscription</a>
+                                                                    <a href="http://localhost/DRCoffee/active.php?code=' . $security_code . '". style="display: inline-block; background-color: #D67F2E; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Confirmer l\'Inscription</a>
                                                                 </p>
                                                                 <p>Si vous n\'avez pas tenté de vous inscrire sur DRCoffee, veuillez ignorer cet e-mail.</p>
                                                             </div>
@@ -96,15 +115,15 @@
                                                             </div>
                                                         </div>
                                                     </body>';
-                                    $mail->setFrom("oyuncoyt@gmail.com", "DRCoffee");
-                                    $mail->send();
-                                    echo 'Merci de vérifier votre boite mail pour la verifaction du votre compte';
-                                }else{
-                                    echo "<div>Une erruer s'est prosuite, Veuillez ressayer ):</div>";
-                                }
-                            }
+                            $mail->setFrom("oyuncoyt@gmail.com", "DRCoffee");
+                            $mail->send();
+                            echo '<p class="sucsses-message">Compte est crée avec succées :), Merci de vérifier votre boite mail.</p>';
+                        } else {
+                            echo '<p class="error-message">Une erreur s\'est produite. Réssayer ultérieurement.</p>';
                         }
-                    ?>
+                    }
+                }
+                ?>
             </div>
         </section>
     </main>
@@ -121,8 +140,10 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Email: nourddinedriouech@gmail.com</p>
-                <p>Téléphone: +212 660 131 889</p>
+                <a href="mailto:nourddinedriouech@gmail.com">Email: nourddinedriouech@gmail.com</a>
+                <br>
+                <br>
+                <a href="tel:0660131889">Téléphone: +212 660 131 889</a>
             </div>
             <div class="footer-section">
                 <h3>Suivez-nous</h3>
@@ -135,9 +156,10 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 DRCoffee. Tous droits réservés.</p>
+
         </div>
     </footer>
+    <script src="home.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,54 @@
+html {
+    scroll-behavior: smooth;
+}
+.about {
+    background-color: #f4f4f4;
+    padding: 40px 0;
+}
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    
+}
+.about-container h2 {
+    text-align: center;
+}
+
+.about-container p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+.divh4{
+    display: flex;
+    justify-content: center;
+}
+h4{
+    text-align: center;
+    width: bold;
+    margin: 2px;
+}
+section.Location{
+    margin: 0px ;
+    background-color: #FFF5E1;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+iframe{
+    width: 450px;
+    height: 300px;
+    margin: 10px 20px;
+    border-radius: 15px;
+
+}
+.LocationP{
+    text-align: center;
+    margin: auto;
+}
+.report{
+    background-color: #f4f4f4;
+    height: 100px;
+}

@@ -43,24 +43,22 @@
             <div class="auth-form inscri-form">
                 <h2>Inscription</h2>
                 <form method="post">
-                    <label for="login-password">Nom Complet*</label>
-                    <input type="text" id="login-password" name="name" required>
+                    <label for="name">Nom Complet*</label>
+                    <input type="text" id="name" name="name" required>
                     <label for="login-email">Email*</label>
                     <input type="email" id="login-email" name="email" required>
-
                     <label for="login-password">Mot de passe*</label>
                     <input type="password" id="login-password" name="password" required>
                     <!-- <label for="login-password">Confirmer le Mot de passe*</label>
-                        <input type="password" id="login-password" name="password" required> -->
-
+                    <input type="password" id="login-password" name="password" required> -->
                     <button type="submit" name="s_incrire">S'incrire</button>
                 </form>
-                <?php
+                <?php                       
                         $username = 'root';
                         $password = "";
                         $database = new PDO("mysql:host=localhost;dbname=DRCoffee;",$username , $password);
                         if (isset($_POST["s_incrire"])) {
-                            $checkmail = $database->prepare("select * from users where email = :email");
+                            $checkmail = $database->prepare("SELECT * FROM users WHERE email = :email");
                             $email = $_POST["email"];
                             $checkmail->bindParam(":email",$email);
                             $checkmail->execute();
@@ -69,7 +67,7 @@
                             }else{
                                 $name = $_POST["name"];
                                 $password = $_POST["password"];
-                                $adduser = $database->prepare("insert into users (name , email , password ,security_code) values (:name,:email,:password, :security_code )");
+                                $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code) VALUES (:name, :email, :password, false, :security_code)");
                                 $adduser->bindParam(":email",$email);
                                 $adduser->bindParam(":password",$password);
                                 $adduser->bindParam(":name",$name);
@@ -100,6 +98,7 @@
                                                     </body>';
                                     $mail->setFrom("oyuncoyt@gmail.com", "DRCoffee");
                                     $mail->send();
+                                    echo 'Merci de vérifier votre boite mail pour la verifaction du votre compte';
                                 }else{
                                     echo "<div>Une erruer s'est prosuite, Veuillez ressayer ):</div>";
                                 }

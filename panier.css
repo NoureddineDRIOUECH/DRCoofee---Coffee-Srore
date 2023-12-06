@@ -1,14 +1,3 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-
-main {
-    padding: 40px 0;
-    background-color: #FFF5E1;
-}
 
 .cart-container {
     max-width: 800px;

@@ -1,0 +1,75 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+
+    padding: 0;
+}
+
+
+main {
+    padding: 40px 0;
+    background-color: #FFF5E1;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+h3{
+    color: #D67F2E;
+}
+h2, h3 {
+    text-align: center;
+}
+
+.user-info, .purchase-history, .edit-profile {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.purchase {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #D67F2E;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.logout-btn {
+    text-align: center;
+}
+
+.logout-btn button {
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

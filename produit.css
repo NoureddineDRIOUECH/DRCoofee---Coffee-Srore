@@ -1,6 +1,8 @@
 main{
     display: flex;
     justify-content: space-around;
+    padding: 40px 0;
+    background-color: #fff;
 }
 #product {
     background-color: #FFF;

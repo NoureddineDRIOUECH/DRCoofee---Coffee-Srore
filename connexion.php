@@ -21,28 +21,9 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="home.html">
-                    <img src="Images/logoIcon.png" alt="DRCoffee">
-                    <h1>DR</h1>
-                    <h1 class="c">C</h1>
-                    <h1>offee</h1>
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#">Produits</a></li>
-                <li><a href="about.html">À Propos</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#">Connexion/Inscription</a></li>
-                <li><a href="#"><img src="Images/UserIcon.png" alt="Profile" style="height: auto; width: 20px;"></a>
-                </li>
-                <li><a href="#"><img src="Images/icons-shopping-cart-.png" alt="Panier" style="height: auto; width: 20px;"></a></li>
-            </ul>
-        </nav>
-        <h5>Où chaque gorgée raconte une histoire d'excellence et de passion</h5>
-    </header>
+    <?php
+    require_once "nav.html";
+    ?>
     <main>
         <section class="auth">
             <div class="auth-form login-form">
@@ -78,10 +59,17 @@
                         if ($user->activated == false) {
                             echo '<p class="error-message">Votre compte n\'est pas activé. Veuillez vérifier votre email pour activer votre compte.</p>';
                         } else {
-                            $_SESSION["email"] = $user->email;
-                            $_SESSION["password"] = $user->password;
-                            $_SESSION["name"] = $user->name;
-                            echo '<p style = "color : green"> Bonjour ' . $user->name . ' :)';
+                            session_start();
+                            $_SESSION["user"] = $user;
+                            if ($user->role === 'user') {
+                                header("location:user/index.php", true);
+                            }
+                            if ($user->role === 'admin') {
+                                header("location:admin/index.php", true);
+                            }
+                            if ($user->role === 'super-admin') {
+                                header("location:super-admin/index.php", true);
+                            }
                         }
                     } else {
                         echo '<p class="error-message">Les informations d\'identification sont incorrectes. Veuillez réessayer.</p>';
@@ -90,36 +78,9 @@
                 ?>
             </div>
         </section>
-        <footer>
-            <div class="footer-container">
-                <div class="footer-section">
-                    <h3>Liens Utiles</h3>
-                    <ul>
-                        <li><a href="home.html">Accueil</a></li>
-                        <li><a href="#">Produits</a></li>
-                        <li><a href="about.html">À Propos</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <a href="mailto:nourddinedriouech@gmail.com">Email: nourddinedriouech@gmail.com</a>
-                    <br>
-                    <br>
-                    <a href="tel:0660131889">Téléphone: +212 660 131 889</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Suivez-nous</h3>
-                    <ul class="social-icons">
-                        <li><a href="https://www.facebook.com/DRIOUECH.Noureddine" target="_blank"><img src="Images/facebookIcon.png" alt="Facebook"></a></li>
-                        <li><a href="https://www.instagram.com/noureddine.driouech/" target="_blank"><img src="Images/instagramIcon.png" alt="Instagram"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-
-            </div>
-        </footer>
+        <?php
+        require_once "footer.html";
+        ?>
         <script src="home.js"></script>
 </body>
 

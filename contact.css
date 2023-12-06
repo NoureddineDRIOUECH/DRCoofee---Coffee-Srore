@@ -35,6 +35,9 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+textarea{
+    height: 300px;
+}
 
 button {
     background-color: #D67F2E;

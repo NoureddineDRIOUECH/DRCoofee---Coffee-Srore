@@ -3,14 +3,12 @@ html {
 }
 body {
     margin: 0;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Roboto', sans-serif;
     height: 100vh;
-    padding: 0;
 }
 
 header{
-    background-color: #D2601A;
-    width: 100%;
+    background-color: #D67F2E;
     height: 85px;
     display: flex;
     flex-direction: column;
@@ -22,19 +20,19 @@ img[alt="DRCoffee"]{
     height: auto ;
     margin: 0px 5px;
 }  
-a[href="home.php"]{
+a[href="home.html"]{
     display: flex;
+}
+h1.c{
+    color: #D67F2E;
 }
 h1{
     font-size: 30px;
     color: black;
     margin: 0px;
-    font-family: "Poppins", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     position: relative;
     top: 10px;  
-}
-h1.c{
-    color: #D2601A;
 }
 .search-bar {
     display: flex;
@@ -44,23 +42,19 @@ h1.c{
 
 .search-bar input {
     padding: 5px;
-    border: 1px solid #D2601A;
+    border: 1px solid #D67F2E;
     border-radius: 5px;
 }
-.search-bar button:hover {
-    background-color: #902713;
-    box-shadow: 1px 1px 1px black;
-}
+
 .search-bar button {
     padding: 5px 10px;
-    background-color: #1e3c46;
+    background-color: #D67F2E;
     border: none;
     border-radius: 5px;
-    color: white;
     cursor: pointer;
 }
 .navbar {
-    background-color: #fff;
+    background-color: #FFF5E1;
     width: 98.7%;
     padding: 5px 10px;
     padding-bottom: 10px;
@@ -69,6 +63,7 @@ h1.c{
     align-items: center;
     height: 45px;
 }
+
 
 a{
     text-decoration: none;
@@ -85,7 +80,7 @@ a{
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
 }
 
@@ -100,10 +95,15 @@ h5{
 
 
 
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
 main {
     padding: 40px 0;
-    background-color: #fff;
+    background-color: #FFF5E1;
 }
 
 .product-container,
@@ -142,7 +142,7 @@ h2 {
 }
 
 .add-to-cart {
-    background-color: #D2601A;
+    background-color: #D67F2E;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -150,34 +150,64 @@ h2 {
     cursor: pointer;
 }
 
-
-
-
-
-
-
-button{
-    background-color: #FF7E12;
-}
-button:hover{
-    background-color: #D2601A;
-}
-
-
-
-
-
-
-
-
-
-
-
 footer h3{
-    color: #fff;
+    color: #FFF5E1;
 }
+
+
+
+button:hover {
+    background-color: #ae6525;
+    box-shadow: 2px 3px 4px black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 footer {
-    background-color:#D2601A;
+    background-color:#ec903a;
     color: black ;
     padding: 20px 0;
     flex-wrap: wrap;

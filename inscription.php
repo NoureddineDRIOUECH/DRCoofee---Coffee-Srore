@@ -28,29 +28,9 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="home.html">
-                    <img src="Images/logoIcon.png" alt="DRCoffee">
-                    <h1>DR</h1>
-                    <h1 class="c">C</h1>
-                    <h1>offee</h1>
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#">Produits</a></li>
-                <li><a href="about.html">À Propos</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="#">Connexion/Inscription</a></li>
-                <li><a href="#"><img src="Images/UserIcon.png" alt="Profile" style="height: auto; width: 20px;"></a>
-                </li>
-                <li><a href="#"><img src="Images/icons-shopping-cart-.png" alt="Panier"
-                            style="height: auto; width: 20px;"></a></li>
-            </ul>
-        </nav>
-        <h5>Où chaque gorgée raconte une histoire d'excellence et de passion</h5>
-    </header>
+    <?php
+    require_once "nav.html";
+    ?>
     <main>
         <section class="Inscription-Form">
             <div class="auth-form inscri-form">
@@ -66,7 +46,7 @@
                     <input type="password" id="login-password" name="password" required> -->
                     <button type="submit" name="s_incrire">S'incrire</button>
                     <div class="inscrption" style="margin-top: 20px; ">
-                        <p style="display: inline;">Vous avez deja un compte ? <a href="connexion.php"
+                        <p style="display: inline;">Vous avez déja un compte ? <a href="connexion.php"
                                 style="color: #D67F2E;">
                                 <p style="display: inline; color: #D67F2E;">Connectez-vous.</p>
                             </a>
@@ -87,7 +67,7 @@
                     } else {
                         $name = $_POST["name"];
                         $password = $_POST["password"];
-                        $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code) VALUES (:name, :email, :password, false, :security_code)");
+                        $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code ,role) VALUES (:name, :email, :password, false, :security_code , 'Utilisateur-Normal')");
                         $adduser->bindParam(":email", $email);
                         $adduser->bindParam(":password", $password);
                         $adduser->bindParam(":name", $name);
@@ -111,7 +91,7 @@
                                                                 <p>Si vous n\'avez pas tenté de vous inscrire sur DRCoffee, veuillez ignorer cet e-mail.</p>
                                                             </div>
                                                             <div style="background-color: #f4f4f4; padding: 10px; text-align: center;">
-                                                                <p style="margin: 0; color: #666;">DRCoffee - Adresse, Ville, Pays</p>
+                                                                <p style="margin: 0; color: #666;">DRCoffee - Casablanca, Maroc</p>
                                                             </div>
                                                         </div>
                                                     </body>';
@@ -127,38 +107,9 @@
             </div>
         </section>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Liens Utiles</h3>
-                <ul>
-                    <li><a href="home.html">Accueil</a></li>
-                    <li><a href="#">Produits</a></li>
-                    <li><a href="about.html">À Propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <a href="mailto:nourddinedriouech@gmail.com">Email: nourddinedriouech@gmail.com</a>
-                <br>
-                <br>
-                <a href="tel:0660131889">Téléphone: +212 660 131 889</a>
-            </div>
-            <div class="footer-section">
-                <h3>Suivez-nous</h3>
-                <ul class="social-icons">
-                    <li><a href="https://www.facebook.com/DRIOUECH.Noureddine" target="_blank"><img
-                                src="Images/facebookIcon.png" alt="Facebook"></a></li>
-                    <li><a href="https://www.instagram.com/noureddine.driouech/" target="_blank"><img
-                                src="Images/instagramIcon.png" alt="Instagram"></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-
-        </div>
-    </footer>
+    <?php
+    require_once "footer.html"
+    ?>
     <script src="home.js"></script>
 </body>
 

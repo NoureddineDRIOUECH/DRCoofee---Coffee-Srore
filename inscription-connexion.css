@@ -1,5 +1,5 @@
 .auth {
-    background-color: #FFF5E1;
+    background-color: #fff;
     padding: 40px 0;
     display: flex;
     justify-content: center;
@@ -50,7 +50,7 @@
 .Inscription-Form{
     display: flex;
     justify-content: center;
-    background-color: #FFF5E1;
+    background-color: #fff;
 }
 .auth-form inscri-form form{
     margin: 10px;

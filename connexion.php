@@ -4,19 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="keywords" content="coffee cupochino machine-coffee">
-    <meta name="description" content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café.">
+    <meta name="description"
+        content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café.">
     <meta name="author" content="Noureddine DRIOUECH">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="inscription-connexion.css">
     <link rel="icon" href="Images/logoIcon.png" type="image/png">
-    <style>
-        .error-message {
-            color: #ff0000;
-            margin-top: 10px;
-            text-align: center;
-        }
-    </style>
     <title>DRCoffee</title>
 </head>
 
@@ -37,8 +31,15 @@
 
                     <button type="submit" name="se_connecter">Se Connecter</button>
                     <div class="inscrption" style="margin-top: 20px; ">
-                        <p style="display: inline;">Vous n'avez pas encore inscris. <a href="inscription.php" style="color: #D67F2E;">
-                                <p style="display: inline; color: #D67F2E;">Inscrivez-vous.</p>
+                        <p style="display: inline;">Avez-vous oublié le mot de passe. <a href="reset.php"
+                                style="color: #D67F2E;">
+                                <p style="display: inline; color: #FF7E12; font-weight: bold;">Rénitialiser le.
+                                </p>
+                            </a>
+                        </p>
+                        <p style="display: inline;">Vous n'avez pas encore inscris. <a href="inscription.php"
+                                style="color: #D67F2E;">
+                                <p style="display: inline; color: #FF7E12; font-weight: bold;">Inscrivez-vous.</p>
                             </a>
                         </p>
                     </div>
@@ -47,12 +48,13 @@
                 $username = "root";
                 $password = "";
                 $database = new PDO("mysql:host=localhost;dbname=DRCoffee;", $username, $password);
+
                 if (isset($_POST["se_connecter"])) {
                     $email = $_POST["login-email"];
-                    $password = $_POST["login-password"];
+                    $passworduser = sha1($_POST["login-password"]);
                     $connecteuser = $database->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
                     $connecteuser->bindParam("email", $email);
-                    $connecteuser->bindParam("password", $password);
+                    $connecteuser->bindParam("password", $passworduser);
                     $connecteuser->execute();
                     if ($connecteuser->rowCount() === 1) {
                         $user = $connecteuser->fetchObject();
@@ -66,9 +68,6 @@
                             }
                             if ($user->role === 'admin') {
                                 header("location:admin/index.php", true);
-                            }
-                            if ($user->role === 'super-admin') {
-                                header("location:super-admin/index.php", true);
                             }
                         }
                     } else {

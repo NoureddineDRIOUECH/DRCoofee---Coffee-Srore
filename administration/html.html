@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css.css" />
+    <title>Administration - DRCoffee</title>
+  </head>
+  <body>
+    <header>
+      <!-- Barre de navigation de l'interface d'administration -->
+      <nav class="admin-nav">
+        <ul>
+          <li><a href="#gestion-produits">Gestion des Produits</a></li>
+          <li><a href="#gestion-commandes">Gestion des Commandes</a></li>
+          <li><a href="#gestion-utilisateurs">Gestion des Utilisateurs</a></li>
+          <li><a href="#statistiques-ventes">Statistiques de Ventes</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="gestion-produits">
+        <h2>Gestion des Produits</h2>
+
+        <!-- Tableau pour afficher la liste des produits -->
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom du Produit</th>
+              <th>Prix</th>
+              <th>Stock</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Exemple de ligne pour un produit -->
+            <tr>
+              <td>1</td>
+              <td>Café Premium</td>
+              <td>$19.99</td>
+              <td>50</td>
+              <td>
+                <button class="edit-btn">Éditer</button>
+                <button class="delete-btn">Supprimer</button>
+              </td>
+            </tr>
+            <!-- Ajoutez d'autres lignes pour d'autres produits -->
+          </tbody>
+        </table>
+      </section>
+
+      <section id="gestion-commandes">
+        <h2>Gestion des Commandes</h2>
+
+        <!-- Tableau pour afficher la liste des commandes -->
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th>ID de Commande</th>
+              <th>Nom de l'Utilisateur</th>
+              <th>Articles Commandés</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Exemple de ligne pour une commande -->
+            <tr>
+              <td>12345</td>
+              <td>JohnDoe</td>
+              <td>Café Premium (x2), Tasse DRCoffee (x1)</td>
+              <td>$39.98</td>
+              <td>
+                <button class="view-details-btn">Détails</button>
+                <button class="process-btn">Traiter</button>
+              </td>
+            </tr>
+            <!-- Ajoutez d'autres lignes pour d'autres commandes -->
+          </tbody>
+        </table>
+      </section>
+
+      <section id="gestion-utilisateurs">
+        <h2>Gestion des Utilisateurs</h2>
+
+        <!-- Tableau pour afficher la liste des utilisateurs -->
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom d'Utilisateur</th>
+              <th>Email</th>
+              <th>Rôle</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Exemple de ligne pour un utilisateur -->
+            <tr>
+              <td>1</td>
+              <td>JohnDoe</td>
+              <td>john.doe@email.com</td>
+              <td>Utilisateur Normal</td>
+              <td>
+                <button class="edit-btn">Éditer</button>
+                <button class="delete-btn">Supprimer</button>
+              </td>
+            </tr>
+            <!-- Ajoutez d'autres lignes pour d'autres utilisateurs -->
+          </tbody>
+        </table>
+      </section>
+
+      <
+      <section id="statistiques-ventes">
+        <h2>Statistiques de Ventes</h2>
+
+        <!-- Graphique ou tableau de statistiques de ventes -->
+        <div class="sales-statistics">
+          <!-- Insérez ici le code pour afficher vos statistiques de ventes -->
+          <p>Exemple : Total des ventes du mois en cours : $50,000</p>
+          <p>Exemple : Nombre total de commandes : 100</p>
+          <!-- Ajoutez d'autres statistiques selon vos besoins -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- Pied de page -->
+    </footer>
+  </body>
+</html>

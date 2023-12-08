@@ -8,9 +8,8 @@
   <meta name="author" content="Noureddine DRIOUECH" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="home.css" />
-  <link rel="stylesheet" href="contact.css" />
   <link rel="icon" href="Images/logoIcon.png" type="image/png" />
-  <title>DRCoffee - Contact</title>
+  <title>DRCoffee</title>
 </head>
 
 <body>
@@ -18,25 +17,36 @@
   require_once "nav.html";
   ?>
   <main>
-    <section class="contact">
-      <div class="contact-container">
-        <h2>Contactez-nous</h2>
-        <p>
-          Vous avez des questions ou des commentaires ? N'hésitez pas à nous
-          contacter en utilisant le formulaire ci-dessous :
-        </p>
-        <form class="contact-form" method="post">
-          <label for="name">Nom*</label>
-          <input type="text" id="name" name="name" required />
+    <section id="featured-products">
+      <div class="product-container">
+        <h2>Produits Recommandés</h2>
 
-          <label for="email">Email*</label>
-          <input type="email" id="email" name="email" required />
+        <!-- Exemple de produit -->
+        <div class="product">
+          <img src="path/to/product1.jpg" alt="Nom du Produit 1" />
+          <h3>Nom du Produit 1</h3>
+          <p>Description courte du produit. Lorem ipsum dolor sit amet.</p>
+          <p class="product-price">$19.99</p>
+          <button class="add-to-cart">Ajouter au Panier</button>
+        </div>
 
-          <label for="message">Message*</label>
-          <textarea id="message" name="message" required></textarea>
+        <!-- Ajoutez d'autres produits recommandés ici -->
+      </div>
+    </section>
 
-          <button type="submit">Envoyer</button>
-        </form>
+    <section id="special-offers">
+      <div class="offer-container">
+        <h2>Offres Spéciales</h2>
+
+        <!-- Exemple d'offre spéciale -->
+        <div class="offer">
+          <img src="path/to/offer1.jpg" alt="Offre Spéciale 1" />
+          <p class="offer-description">
+            Profitez de notre offre spéciale de la semaine !
+          </p>
+        </div>
+
+        <!-- Ajoutez d'autres offres spéciales ici -->
       </div>
     </section>
   </main>

@@ -25,7 +25,7 @@
           Vous avez des questions ou des commentaires ? N'hésitez pas à nous
           contacter en utilisant le formulaire ci-dessous :
         </p>
-        <form class="contact-form" method="post">
+        <form action="#" method="post">
           <label for="name">Nom*</label>
           <input type="text" id="name" name="name" required />
 

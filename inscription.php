@@ -11,19 +11,6 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="inscription-connexion.css">
     <link rel="icon" href="Images/logoIcon.png" type="image/png">
-    <style>
-    .error-message {
-        color: #ff0000;
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .sucsses-message {
-        color: #D67F2E;
-        margin-top: 10px;
-        text-align: center;
-    }
-    </style>
     <title>DRCoffee</title>
 </head>
 
@@ -48,7 +35,7 @@
                     <div class="inscrption" style="margin-top: 20px; ">
                         <p style="display: inline;">Vous avez déja un compte ? <a href="connexion.php"
                                 style="color: #D67F2E;">
-                                <p style="display: inline; color: #D67F2E;">Connectez-vous.</p>
+                                <p style="display: inline; color: #FF7E12; font-weight: bold;">Connectez-vous.</p>
                             </a>
                         </p>
                     </div>
@@ -66,10 +53,10 @@
                         echo '<p class="error-message">Cet adresse mail existe déja.</p>';
                     } else {
                         $name = $_POST["name"];
-                        $password = $_POST["password"];
-                        $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code ,role) VALUES (:name, :email, :password, false, :security_code , 'Utilisateur-Normal')");
+                        $passworduser = sha1($_POST["password"]);
+                        $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code ,role) VALUES (:name, :email, :password, false, :security_code , 'user')");
                         $adduser->bindParam(":email", $email);
-                        $adduser->bindParam(":password", $password);
+                        $adduser->bindParam(":password", $passworduser);
                         $adduser->bindParam(":name", $name);
                         $security_code = md5(date("h:m:s"));
                         $adduser->bindParam(":security_code", $security_code);

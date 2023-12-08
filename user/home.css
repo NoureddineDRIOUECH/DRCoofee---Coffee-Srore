@@ -3,12 +3,14 @@ html {
 }
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Poppins", sans-serif;
     height: 100vh;
+    padding: 0;
 }
 
 header{
-    background-color: #D67F2E;
+    background-color: #D2601A;
+    width: 100%;
     height: 85px;
     display: flex;
     flex-direction: column;
@@ -20,19 +22,19 @@ img[alt="DRCoffee"]{
     height: auto ;
     margin: 0px 5px;
 }  
-a[href="home.html"]{
+a[href="home.php"]{
     display: flex;
-}
-h1.c{
-    color: #D67F2E;
 }
 h1{
     font-size: 30px;
     color: black;
     margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Poppins", sans-serif;
     position: relative;
     top: 10px;  
+}
+h1.c{
+    color: #D2601A;
 }
 .search-bar {
     display: flex;
@@ -42,20 +44,24 @@ h1{
 
 .search-bar input {
     padding: 5px;
-    border: 1px solid #D67F2E;
+    border: 1px solid #D2601A;
     border-radius: 5px;
 }
-
+.search-bar button:hover {
+    background-color: #902713;
+    box-shadow: 1px 1px 1px black;
+}
 .search-bar button {
     padding: 5px 10px;
-    background-color: #D67F2E;
+    background-color: #1e3c46;
     border: none;
     border-radius: 5px;
+    color: white;
     cursor: pointer;
 }
 .navbar {
-    background-color: #FFF5E1;
-    width: 98.7%;
+    background-color: #fff;
+    width: 98.8%;
     padding: 5px 10px;
     padding-bottom: 10px;
     display: flex;
@@ -63,7 +69,6 @@ h1{
     align-items: center;
     height: 45px;
 }
-
 
 a{
     text-decoration: none;
@@ -80,7 +85,7 @@ a{
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     cursor: pointer;
 }
 
@@ -88,22 +93,18 @@ a{
 h5{
     align-self: center;
     margin: 3px;
-    color: black;
+    color: white;
+    text-transform: uppercase;
     font-size: 15px;
 }
 
 
 
 
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
 main {
-    padding: 40px 0;
-    background-color: #FFF5E1;
+    padding: 10px 10px;
+    background-color: #fff;
 }
 
 .product-container,
@@ -142,7 +143,7 @@ h2 {
 }
 
 .add-to-cart {
-    background-color: #D67F2E;
+    background-color: #D2601A;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -150,64 +151,34 @@ h2 {
     cursor: pointer;
 }
 
+
+
+
+
+
+
+button{
+    background-color: #FF7E12;
+}
+button:hover{
+    background-color: #D2601A;
+}
+
+
+
+
+
+
+
+
+
+
+
 footer h3{
-    color: #FFF5E1;
+    color: #fff;
 }
-
-
-
-button:hover {
-    background-color: #ae6525;
-    box-shadow: 2px 3px 4px black;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 footer {
-    background-color:#ec903a;
+    background-color:#D2601A;
     color: black ;
     padding: 20px 0;
     flex-wrap: wrap;

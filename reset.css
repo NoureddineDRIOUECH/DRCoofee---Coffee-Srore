@@ -1,0 +1,55 @@
+
+main {
+    padding: 40px 0;
+    background-color: #FFF;
+}
+
+.reset-password-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #FF7E12 ;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+    text-align: center;
+}
+.sucsses-message {
+    color: #1e3c46;
+    margin-top: 10px;
+    text-align: center;
+}

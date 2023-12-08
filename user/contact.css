@@ -1,6 +1,6 @@
 .contact {
     background-color: #FFF;
-    padding: 10px 0;
+    padding: 40px 0;
 }
 
 .contact-container {
@@ -36,16 +36,14 @@ input, textarea {
     border-radius: 5px;
 }
 textarea{
-    height: 200px;
+    height: 300px;
 }
 
 .contact-form button {
-    background-color: #FF7E12 ;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #fff;
+    background-color:#FF7E12;
     padding: 10px 20px;
     border: none;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
 }

@@ -20,6 +20,10 @@
 .auth-form h2 {
     text-align: center;
     margin-bottom: 20px;
+    line-height: 1.2;
+    color: #1e3c46;
+    letter-spacing: -.014em;
+
 }
 
 .auth-form form {
@@ -29,6 +33,8 @@
 
 .auth-form label {
     margin-bottom: 10px;
+    color: #1e3c46;
+    font-weight: 700;
 }
 
 .auth-form input {
@@ -39,8 +45,9 @@
 }
 
 .auth-form button {
-    background-color: #D67F2E;
-    color: black;
+    background-color: #FF7E12 ;
+    text-transform: uppercase;
+    font-weight: 700;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -55,11 +62,19 @@
 .auth-form inscri-form form{
     margin: 10px;
 }
+.error-message {
+    color: #FB3636;
+    margin-top: 10px;
+    text-align: center;
+}
 
-
-
-
-
-
+.sucsses-message {
+    color: #26A310;
+    margin-top: 10px;
+    text-align: center;
+}
+button:hover{
+    background-color: #902713;
+}
 
 

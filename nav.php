@@ -8,10 +8,10 @@
         <h1>offee</h1>
       </a>
     </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Rechercher un produit..." />
-      <button type="button">Rechercher</button>
-    </div>
+    <form method="get" action="cherche_resultat.php" class="search-bar">
+      <input type="text" name="value" placeholder="Rechercher un produit..." />
+      <button type="submit" name="search">Rechercher</button>
+    </form>
     <ul class="nav-links">
       <li><a href="produit.php">Produits</a></li>
       <li><a href="about.php">À Propos</a></li>

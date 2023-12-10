@@ -11,6 +11,7 @@ main{
   border-radius: 10px;
   padding: 10px;
   gap: 10px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -101,4 +102,12 @@ main{
 }
 .container-product button:hover{
     background-color: #902713;
+}
+.error-message {
+    color: #FB3636;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+
 }

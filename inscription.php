@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="keywords" content="coffee cupochino machine-coffee">
-    <meta name="description"
-        content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café.">
+    <meta name="description" content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café.">
     <meta name="author" content="Noureddine DRIOUECH">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
@@ -16,7 +15,7 @@
 
 <body>
     <?php
-    require_once "nav.html";
+    require_once "nav.php";
     ?>
     <main>
         <section class="Inscription-Form">
@@ -33,8 +32,7 @@
                     <input type="password" id="login-password" name="password" required> -->
                     <button type="submit" name="s_incrire">S'incrire</button>
                     <div class="inscrption" style="margin-top: 20px; ">
-                        <p style="display: inline;">Vous avez déja un compte ? <a href="connexion.php"
-                                style="color: #D67F2E;">
+                        <p style="display: inline;">Vous avez déja un compte ? <a href="connexion.php" style="color: #D67F2E;">
                                 <p style="display: inline; color: #FF7E12; font-weight: bold;">Connectez-vous.</p>
                             </a>
                         </p>

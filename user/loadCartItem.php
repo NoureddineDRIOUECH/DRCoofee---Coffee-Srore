@@ -16,8 +16,12 @@ if (isset($_SESSION['user'])) {
     $items = [];
     $i = 0;
     if (empty($cartItems)) {
-        echo '<div class="empty-cart-message">Votre panier est vide.</div>';
+        echo '<div style ="display: flex; flex-direction : column; gap : 50px  padding-top : 20px">';
+        echo '<img src= "Images/empty cart.svg" style = "width : 400px; margin : auto" />';
+        echo '<div class="empty-cart-message" style = "margin: 20px 10px">Votre panier est vide.</div>';
+        echo '</div>';
     } else {
+        echo '<div class="cart-container">';
         foreach ($cartItems as $item) {
             $items[$i] = ['nomProduit' => $item['nomProduit']];
             $getFile = "data:" . $item['imageType'] . ";base64," . base64_encode($item["image"]);

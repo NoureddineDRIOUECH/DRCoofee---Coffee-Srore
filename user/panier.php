@@ -29,11 +29,12 @@ if (!isset($_SESSION['user'])) {
         <h2>Mon Panier</h2>
         <section id="cart">
 
-            <div class="cart-container">
-                <?php include "loadCartItem.php"; ?>
+
+            <?php include "loadCartItem.php"; ?>
 
 
-                <div id="toast"></div>
+            <div id="toastS"></div>
+            <div id="toastF"></div>
     </main>
     <?php
         require_once "footer.html";

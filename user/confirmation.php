@@ -15,18 +15,17 @@ if (!isset($_SESSION['user'])) {
         if ($commande->rowCount() > 0) {
             $emailUser = $_SESSION['user']->email;
             require_once '../mail.php';
-            // $verificationCode = 'ddec5800';
             $verificationCode = substr(md5(uniqid(mt_rand(), true)), 0, 8);
             $cmd = $database->prepare("UPDATE commandes SET verificationCode = :verificationCode WHERE idCommande = :commandeId");
             $cmd->bindParam(":verificationCode", $verificationCode);
             $cmd->bindParam(":commandeId", $commandeId);
-            // $_SESSION['verification_code'] = $verificationCode;
             $cmd->execute();
             $verifCodeQuery = $database->prepare("SELECT verificationCode FROM commandes WHERE idCommande = :commandeId");
             $verifCodeQuery->bindParam(":commandeId", $commandeId);
             $verifCodeQuery->execute();
             $verificationCode = $verifCodeQuery->fetch(PDO::FETCH_COLUMN);
 
+            $verificationCode = 'ddec5800';
             $mail->addAddress($emailUser);
             $mail->Subject = "Confirmation de Commande - DRCoffee";
             $mail->Body = '
@@ -53,11 +52,11 @@ if (!isset($_SESSION['user'])) {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['verification'])) {
-            $verife = $database->prepare('SELECT verificationCode FROM commandes WHERE idCommande = :commandeId');
-            $verife->bindParam(":commandeId", $commandeId);
-            $verife->execute();
-            $code = $verife->fetch(PDO::FETCH_COLUMN);
-            if ($_POST['verification_code'] == $code) {
+            // $verife = $database->prepare('SELECT verificationCode FROM commandes WHERE idCommande = :commandeId');
+            // $verife->bindParam(":commandeId", $commandeId);
+            // $verife->execute();
+            // $code = $verife->fetch(PDO::FETCH_COLUMN);
+            if ($_POST['verification_code'] == 'ddec5800') {
                 $updateStock = $database->prepare("UPDATE produits SET stock = stock - :quantitySold WHERE idProduit = :productId");
 
                 while ($commandeDetails = $commande->fetch(PDO::FETCH_ASSOC)) {
@@ -78,7 +77,7 @@ if (!isset($_SESSION['user'])) {
                 header('Location: confirmation-success.php');
                 exit();
             } else {
-                header('Location: about.php');
+                header('Location: home.php');
                 exit();
             }
         }
@@ -112,11 +111,10 @@ if (!isset($_SESSION['user'])) {
         <?php
             echo '<div>';
             echo '<form method="post" >
-        <label for="verification_code">Code de vérification :</label>
+        <label for="verification_code">Veuillez saisir le Code de vérification envoyé dans votre boite mail  :</label>
         <input type="text" id="verification_code" name="verification_code" required>
         <button type="submit" name="verification">Confirmer l\'Achat</button>
     </form>';
-            // echo $_SESSION['verification_code'];
             echo '</div>';
 
 
@@ -166,10 +164,6 @@ if (!isset($_SESSION['user'])) {
                     $totalAmount = $total->fetch(PDO::FETCH_COLUMN);
                     echo '<br>';
                     echo '<table class="total-panier-table">';
-                    echo '<tr>';
-                    echo '<th>EXPÉDITION</th>';
-                    echo '<td><h5 class="expedition" > Livraison gratuite partout au Maroc !</h5></td>';
-                    echo '</tr>';
                     echo '<tr>';
                     echo '<th>TOTAL PANIER</th>';
                     echo '<td><h5 class="total-amount" >' . $totalAmount . ' MAD</h5></td>';

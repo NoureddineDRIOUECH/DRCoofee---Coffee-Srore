@@ -48,7 +48,7 @@ if (!isset($_SESSION['user'])) {
             <section class="Location">
                 <div class="LocationP">
                     <h2>Notre Location</h2>
-                    <img src="Images/locationIcon.png" alt="Location">
+                    <img src="Images/location.svg" alt="Location">
                     <p>Nous sommes situés au cœur de la Ville Casablanca . Venez nous rendre visite !</p>
                 </div>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6648.011497404557!2d-7.6133!3d33.5792!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sma!4v1701448799425!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

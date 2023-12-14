@@ -8,8 +8,7 @@ require_once '../connectDB.php';
 <head>
     <meta charset="UTF-8">
     <meta name="keywords" content="coffee cupochino machine-coffee">
-    <meta name="description"
-        content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café.">
+    <meta name="description" content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café.">
     <meta name="author" content="Noureddine DRIOUECH">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../Images/logoIcon.png" type="image/png" />
@@ -134,6 +133,63 @@ require_once '../connectDB.php';
             </div>
 
         </div>
+        <div id="commandes" class="title">
+            <p>Commandes</p>
+            <i class="fas fa-pen"></i>
+        </div>
+        <?php
+        $commandes = $database->prepare("SELECT * FROM commandes WHERE etat = 'Confirmée'");
+        $commandes->execute();
+
+        while ($data = $commandes->fetch(PDO::FETCH_ASSOC)) {
+            $userDetails = $database->prepare("SELECT name, tel, address FROM users WHERE id = :userId");
+            $userDetails->bindParam(":userId", $data['idUser']);
+            $userDetails->execute();
+            $userData = $userDetails->fetch(PDO::FETCH_ASSOC);
+
+            echo '<table>';
+            echo '<thead>';
+            echo '<tr>';
+            echo '<th>Nom de l\'Utilisateur</th>';
+            echo '<th>Téléphone</th>';
+            echo '<th>Adresse</th>';
+            echo '<th>Total en MAD</th>';
+            echo '<th>Articles Commandés</th>';
+            echo '<th>Quantité</th>';
+            echo '<th>Action</th>';
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+
+            $orderID = $data['idCommande'];
+            $productsQuery = $database->prepare("SELECT produits.nomProduit, commandeDetails.Quantite FROM
+        commandeDetails INNER JOIN produits ON commandeDetails.IDProduit = produits.idProduit WHERE IDCommande =
+        :orderID");
+            $productsQuery->bindParam(":orderID", $orderID);
+            $productsQuery->execute();
+            $products = $productsQuery->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($products as $index => $product) {
+                echo '<tr>';
+                if ($index === 0) {
+                    echo '<td rowspan="' . count($products) . '">' . $userData['name'] . '</td>';
+                    echo '<td rowspan="' . count($products) . '">' . $userData['tel'] . '</td>';
+                    echo '<td rowspan="' . count($products) . '">' . $userData['address'] . '</td>';
+                    echo '<td rowspan="' . count($products) . '">' . $data['total'] . ' MAD</td>';
+                }
+                echo '<td>' . $product['nomProduit'] . '</td>';
+                echo '<td>' . $product['Quantite'] . '</td>';
+                if ($index === 0) {
+                    echo '<td rowspan="' . count($products) . '"><button class="process-btn" data-order-id="' . $data['idCommande'] . '">Traiter</button></td>';
+                }
+                echo '</tr>';
+            }
+
+            echo '</tbody>';
+            echo '</table>';
+        }
+        ?>
+
 
         <div id="products" class="title">
             <p>Produits</p>
@@ -230,63 +286,6 @@ require_once '../connectDB.php';
                 </div>
             </tfoot>
         </table>
-        <div id="commandes" class="title">
-            <p>Commandes</p>
-            <i class="fas fa-pen"></i>
-        </div>
-        <?php
-        $commandes = $database->prepare("SELECT * FROM commandes WHERE etat = 'Confirmée'");
-        $commandes->execute();
-
-        while ($data = $commandes->fetch(PDO::FETCH_ASSOC)) {
-            $userDetails = $database->prepare("SELECT name, tel, address FROM users WHERE id = :userId");
-            $userDetails->bindParam(":userId", $data['idUser']);
-            $userDetails->execute();
-            $userData = $userDetails->fetch(PDO::FETCH_ASSOC);
-
-            echo '<table>';
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Nom de l\'Utilisateur</th>';
-            echo '<th>Téléphone</th>';
-            echo '<th>Adresse</th>';
-            echo '<th>Total en MAD</th>';
-            echo '<th>Articles Commandés</th>';
-            echo '<th>Quantité</th>';
-            echo '<th>Action</th>';
-            echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
-
-            $orderID = $data['idCommande'];
-            $productsQuery = $database->prepare("SELECT produits.nomProduit, commandeDetails.Quantite FROM
-        commandeDetails INNER JOIN produits ON commandeDetails.IDProduit = produits.idProduit WHERE IDCommande =
-        :orderID");
-            $productsQuery->bindParam(":orderID", $orderID);
-            $productsQuery->execute();
-            $products = $productsQuery->fetchAll(PDO::FETCH_ASSOC);
-
-            foreach ($products as $index => $product) {
-                echo '<tr>';
-                if ($index === 0) {
-                    echo '<td rowspan="' . count($products) . '">' . $userData['name'] . '</td>';
-                    echo '<td rowspan="' . count($products) . '">' . $userData['tel'] . '</td>';
-                    echo '<td rowspan="' . count($products) . '">' . $userData['address'] . '</td>';
-                    echo '<td rowspan="' . count($products) . '">' . $data['total'] . ' MAD</td>';
-                }
-                echo '<td>' . $product['nomProduit'] . '</td>';
-                echo '<td>' . $product['Quantite'] . '</td>';
-                if ($index === 0) {
-                    echo '<td rowspan="' . count($products) . '"><button class="process-btn" data-order-id="' . $data['idCommande'] . '">Traiter</button></td>';
-                }
-                echo '</tr>';
-            }
-
-            echo '</tbody>';
-            echo '</table>';
-        }
-        ?>
-
 
         <div id="users" class="title">
             <p>Utilisateurs</p>

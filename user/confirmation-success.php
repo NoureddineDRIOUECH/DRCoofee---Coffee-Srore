@@ -1,31 +1,86 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('location:../connexion.php');
+} else {
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" /> <!-- Include your styles if needed -->
-    <title>Confirmation Success</title>
-</head>
+?>
+    <!DOCTYPE html>
+    <html lang="fr">
 
-<body>
-    <?php require_once 'nav.html';?>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="coffee cupochino machine-coffee" />
+        <meta name="description" content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café." />
+        <meta name="author" content="Noureddine DRIOUECH" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="home.css" />
+        <style>
+            main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
 
-    <main>
-        <div class="success-container">
-            <h2>Order Confirmed Successfully!</h2>
-            <p>Thank you for confirming your order. Your purchase is now complete.</p>
+            .success-container {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                text-align: center;
+                max-width: 400px;
+            }
 
-            <!-- Additional content or actions can be added here -->
-            <p>Your order will be processed, and you will receive updates on the delivery status.</p>
-            <p>If you have any questions, feel free to <a href="contact.php">contact our support team</a>.</p>
+            main h2 {
+                color: #4caf50;
+                /* Green color for success message */
+                margin-bottom: 20px;
+            }
 
-            <a href="index.php">Continue Shopping</a>
-            <!-- Provide a link to your main page or any other relevant page -->
-        </div>
-    </main>
+            main p {
+                margin-bottom: 15px;
+            }
 
-    <?php require_once 'nav.html';?>
-</body>
+            main a {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #4caf50;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
 
-</html>
+            main a:hover {
+                background-color: #45a049;
+            }
+        </style>
+        <link rel="icon" href="Images/logoIcon.png" type="image/png" />
+        <title>Confirmation avec succes</title>
+    </head>
+
+    <body>
+        <?php require_once 'nav.html'; ?>
+
+        <main>
+            <div class="success-container">
+                <h2>Votre commandes est confirmée avec succes!</h2>
+                <p>Merci pour l'achat, votre commande serai delivre a ton addresse.</p>
+
+                <p>Vous serez avec les mis a joure du votre commandes.</p>
+                <p>Si vous avez des questions <a href="contact.php">Contacter nous</a>.</p>
+
+                <a href="index.php">Achetez d'autre produits</a>
+            </div>
+        </main>
+
+        <?php require_once 'footer.html'; ?>
+    </body>
+
+    </html>
+
+<?php
+}
+?>

@@ -32,8 +32,21 @@ function moins(idPanier, quantite) {
     })
       .then((response) => response.json())
       .then((data) => {
+        if (data.success) {
+          function showToast(message) {
+            var toast = document.getElementById("toastS");
+            toast.innerHTML = message;
+            toast.style.display = "block";
+            setTimeout(function () {
+              toast.style.display = "none";
+            }, 3000);
+          }
+          showToast("L'element suprimmer avec succes!");
+        }
         console.log("Response from server:", data);
-        window.location.href = "panier.php";
+      })
+      .then(() => {
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error removing item from cart:", error);
@@ -57,15 +70,33 @@ function plus(idPanier, idProduit, quantite) {
   })
     .then((response) => response.json())
     .then((data) => {
+      if (data.success) {
+        function showToast(message) {
+          var toast = document.getElementById("toastS");
+          toast.innerHTML = message;
+          toast.style.display = "block";
+          setTimeout(function () {
+            toast.style.display = "none";
+          }, 3000);
+        }
+        showToast("L'element ajouté avec succes!");
+      }
       console.log("Response from server:", data);
-      window.location.href = "panier.php";
-      showToast("Item added successfully!");
+    })
+    .then(() => {
+      window.location.reload();
     })
     .catch((error) => {
-      console.error("Error removing item from cart:", error);
-      successmsg = document.querySelector(".item-details");
-      successmsg.innerHTML +=
-        '<p style="color: #FB3636; " >Vous avez depasser la quantite q\'on a en stock </p>';
+      console.error("Error plus quntite item from cart:", error);
+      function showToast(message) {
+        var toast = document.getElementById("toastF");
+        toast.innerHTML = message;
+        toast.style.display = "block";
+        setTimeout(function () {
+          toast.style.display = "none";
+        }, 3000);
+      }
+      showToast("Vous avez depasser la quantite q'on a en stock");
     });
 }
 
@@ -83,16 +114,23 @@ function commander(total, userId, idPanier) {
   })
     .then((response) => response.json())
     .then((data) => {
+      if (data.success) {
+        function showToast(message) {
+          var toast = document.getElementById("toastS");
+          toast.innerHTML = message;
+          toast.style.display = "block";
+          setTimeout(function () {
+            toast.style.display = "none";
+          }, 3000);
+        }
+        showToast("La commande est envoyé veuillez la confirmer avec succes!");
+      }
       console.log("Response from server:", data);
-      window.location.href = "utilisateur.php";
     })
     .then(() => {
-      setTimeout(() => {
-        successmsg = document.querySelector(".cart-container");
-        successmsg.firstElementChild.innerHTML +=
-          '<p style="color: green">Votre Commande est envoyée avec succès </p>';
-      }, 1000);
+      window.location.href = "utilisateur.php";
     })
+
     .catch((error) => {
       console.error("Error commanding item from cart:", error);
     });

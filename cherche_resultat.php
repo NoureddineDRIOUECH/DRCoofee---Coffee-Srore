@@ -14,7 +14,8 @@ if (isset($_GET['search'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="keywords" content="coffee cupochino machine-coffee" />
-    <meta name="description" content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café." />
+    <meta name="description"
+        content="Découvrez un univers de délices caféinés sur DRCoffee. Notre site vous invite à explorer une gamme exquise de cafés, des grains soigneusement sélectionnés aux machines à capsules de pointe. Plongez dans une expérience de magasinage unique où la passion pour le café rencontre l'innovation. Parcourez notre catalogue pour découvrir des saveurs riches, des accessoires élégants et des machines qui transforment chaque tasse en une célébration de l'art du café." />
     <meta name="author" content="Noureddine DRIOUECH" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="home.css" />
@@ -32,28 +33,29 @@ if (isset($_GET['search'])) {
         <div class="products-container">
 
             <?php foreach ($searchProduct as $product) : ?>
-                <?php $getFile = "data:" . $product['imageType'] . ";base64," . base64_encode($product["image"]); ?>
+            <?php $getFile = "data:" . $product['imageType'] . ";base64," . base64_encode($product["image"]); ?>
 
-                <div class="container-product">
-                    <div class="images">
-                        <img src="<?php echo $getFile; ?> " alt="Image Produits" />
-                        <p class="stock">Quantité : <?php echo $product['stock']; ?></p>
-                        <button class="add">Ajouter au Panier</button>
-                    </div>
-
-                    <div class="product">
-                        <h2><?php echo $product['nomProduit']; ?></h2>
-                        <h3><?php echo $product['prixProduit']; ?> MAD</h3>
-                        <p class="desc">
-                            <?php echo $product['description']; ?>
-                        </p>
-                    </div>
+            <div class="container-product">
+                <div class="images">
+                    <img src="<?php echo $getFile; ?> " alt="Image Produits" />
+                    <p class="stock">Quantité : <?php echo $product['stock']; ?></p>
+                    <button class="add">Ajouter au Panier</button>
                 </div>
+
+                <div class="product">
+                    <h2><?php echo $product['nomProduit']; ?></h2>
+                    <h3><?php echo $product['prixProduit']; ?> MAD</h3>
+                    <p class="desc">
+                        <?php echo $product['description']; ?>
+                    </p>
+                </div>
+            </div>
             <?php endforeach; ?>
         </div>
         <?php
         if (empty($searchProduct)) {
             echo '<p class="error-message">Aucune résultats trouvé pour le term : ' . $_GET["value"] . '.</p>';
+            echo '<img src= "Images/searchF.svg" style = "width : 400px; margin : auto" />';
             echo '<p class="error-message">Veuillez réessayer avec d\'autres termes de recherche… .</p>';
         }
         ?>

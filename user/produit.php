@@ -1,8 +1,15 @@
 <?php
-require_once '../connectDB.php';
-$categoriesQuery = $database->prepare("SELECT DISTINCT categoriesProduis FROM produits");
-$categoriesQuery->execute();
-$categories = $categoriesQuery->fetchAll(PDO::FETCH_COLUMN); ?>
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('location:../connexion.php');
+} else {
+
+?>
+<?php
+    require_once '../connectDB.php';
+    $categoriesQuery = $database->prepare("SELECT DISTINCT categoriesProduis FROM produits");
+    $categoriesQuery->execute();
+    $categories = $categoriesQuery->fetchAll(PDO::FETCH_COLUMN); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -21,22 +28,22 @@ $categories = $categoriesQuery->fetchAll(PDO::FETCH_COLUMN); ?>
 
 <body>
     <?php
-    require_once "nav.html";
-    ?>
+        require_once "nav.html";
+        ?>
     <main class="product-main">
         <?php foreach ($categories as $category) : ?>
         <section id="product">
             <h2><?php echo $category; ?></h2>
             <?php
-                $productsQuery = $database->prepare("SELECT * FROM produits WHERE categoriesProduis = :category");
-                $productsQuery->bindParam(':category', $category, PDO::PARAM_STR);
-                $productsQuery->execute();
-                $categoryProducts = $productsQuery->fetchAll(PDO::FETCH_ASSOC);
-                ?>
+                    $productsQuery = $database->prepare("SELECT * FROM produits WHERE categoriesProduis = :category");
+                    $productsQuery->bindParam(':category', $category, PDO::PARAM_STR);
+                    $productsQuery->execute();
+                    $categoryProducts = $productsQuery->fetchAll(PDO::FETCH_ASSOC);
+                    ?>
             <div class="products-container">
                 <?php foreach ($categoryProducts as $product) : ?>
                 <?php $getFile = "data:" . $product['imageType'] . ";base64," . base64_encode($product["image"]); ?>
-
+                <div id="toast"></div>
                 <div class="container-product">
                     <div class="images">
                         <img src="<?php echo $getFile; ?> " alt="Image Produits" />
@@ -63,9 +70,12 @@ $categories = $categoriesQuery->fetchAll(PDO::FETCH_COLUMN); ?>
         <?php endforeach; ?>
     </main>
     <?php
-    require_once "footer.html";
-    ?>
+        require_once "footer.html";
+        ?>
     <script src="produit.js"></script>
 </body>
 
 </html>
+<?php
+}
+?>

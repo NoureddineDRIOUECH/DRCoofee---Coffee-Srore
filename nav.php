@@ -9,7 +9,7 @@
       </a>
     </div>
     <form method="get" action="cherche_resultat.php" class="search-bar">
-      <input type="text" name="value" placeholder="Rechercher un produit..." />
+      <input class="search-btn" type="text" name="value" placeholder="Rechercher un produit..." />
       <button type="submit" name="search">Rechercher</button>
     </form>
     <ul class="nav-links">

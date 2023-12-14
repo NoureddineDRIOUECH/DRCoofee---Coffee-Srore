@@ -17,16 +17,16 @@ h2 {
     text-align: center;
 }
 
-form {
+main form {
     display: flex;
     flex-direction: column;
 }
 
-label {
+main label {
     margin-bottom: 5px;
 }
 
-input {
+main input {
     margin-bottom: 15px;
     padding: 8px;
     border: 1px solid #ccc;
@@ -49,7 +49,7 @@ button {
     text-align: center;
 }
 .sucsses-message {
-    color: #1e3c46;
+    color: green;
     margin-top: 10px;
     text-align: center;
 }

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('location:../connexion.php');
+} else {
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,8 +23,8 @@
 
 <body>
     <?php
-    require_once "nav.html";
-    ?>
+        require_once "nav.html";
+        ?>
     <main>
         <h2>Mon Panier</h2>
         <section id="cart">
@@ -26,12 +33,16 @@
                 <?php include "loadCartItem.php"; ?>
 
 
-
+                <div id="toast"></div>
     </main>
     <?php
-    require_once "footer.html";
-    ?>
+        require_once "footer.html";
+        ?>
     <script src="home.js"></script>
+    <script src="panier.js"></script>
 </body>
 
 </html>
+<?php
+}
+?>

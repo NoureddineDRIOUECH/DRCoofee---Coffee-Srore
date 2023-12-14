@@ -34,14 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          const main = document.querySelector(
-            `button[data-product-id="${idProduit}"]`
-          );
-          const successMessage = document.createElement("div");
-          successMessage.className = "success-message";
-          successMessage.innerHTML = "Merci pour acheter depuis notre store :)";
-          successMessage.style.color = "#26A310";
-          main.parentElement.appendChild(successMessage);
+          function showToast(message) {
+            var toast = document.getElementById("toast");
+            toast.innerHTML = message;
+            toast.style.display = "block";
+            setTimeout(function () {
+              toast.style.display = "none";
+            }, 3000);
+          }
+          showToast("L'element ajouté a votre panier!");
         }
         console.log("Response from server:", data);
       })

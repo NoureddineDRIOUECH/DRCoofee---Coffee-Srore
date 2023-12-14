@@ -28,6 +28,10 @@
                     <input type="email" id="login-email" name="email" required>
                     <label for="login-password">Mot de passe*</label>
                     <input type="password" id="login-password" name="password" required>
+                    <label for="number">Numéro de Téléphone*</label>
+                    <input type="number" id="number" name="tel" required />
+                    <label for="address">Adresse*</label>
+                    <input type="text" id="address" name="address" required />
                     <!-- <label for="login-password">Confirmer le Mot de passe*</label>
                     <input type="password" id="login-password" name="password" required> -->
                     <button type="submit" name="s_incrire">S'incrire</button>
@@ -51,11 +55,15 @@
                         echo '<p class="error-message">Cet adresse mail existe déja.</p>';
                     } else {
                         $name = $_POST["name"];
+                        $address = $_POST["address"];
+                        $tel = $_POST["tel"];
                         $passworduser = sha1($_POST["password"]);
-                        $adduser = $database->prepare("INSERT INTO users (name, email, password,activated, security_code ,role) VALUES (:name, :email, :password, false, :security_code , 'user')");
+                        $adduser = $database->prepare("INSERT INTO users (name, email,tel , address, password, activated, security_code ,role) VALUES (:name, :email,  :tel , :address,:password, false, :security_code , 'user')");
                         $adduser->bindParam(":email", $email);
                         $adduser->bindParam(":password", $passworduser);
                         $adduser->bindParam(":name", $name);
+                        $adduser->bindParam(":address", $address);
+                        $adduser->bindParam(":tel", $tel);
                         $security_code = md5(date("h:m:s"));
                         $adduser->bindParam(":security_code", $security_code);
                         if ($adduser->execute()) {

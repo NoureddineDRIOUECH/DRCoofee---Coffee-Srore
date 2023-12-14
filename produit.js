@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         console.log("Response from server:", data);
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error adding item to cart:", error);

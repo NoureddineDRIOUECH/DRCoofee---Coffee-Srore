@@ -45,7 +45,7 @@
 
           <form method="get">
               <label for="password">Mot de passe :</label>
-              <input type="email" id="password" name="new-password" required>
+              <input type="password" id="password" name="new-password" required>
 
               <button type="submit" name="reset-new">Réinitialisé le mot de passe</button>
           </form>
@@ -78,7 +78,7 @@
                                                                 <h2 style="color: #D67F2E;">Réinitialisation du Mot de Passe</h2>
                                                                 <p>Nous avons reçu une demande de réinitialisation du mot de passe pour votre compte sur DRCoffee. Cliquez sur le lien ci-dessous pour choisir un nouveau mot de passe :</p>
                                                                 <p style="text-align: center;">
-                                                                    <a href="http://localhost/DRCoffee/reset.php?email=' . $_POST['email'] . '&code=' . $user->security_code . '". style="display: inline-block; background-color: #D67F2E; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Confirmer l\'Inscription</a>
+                                                                    <a href="http://localhost/DRCoffee/reset.php?email=' . $_POST['email'] . '&code=' . $user->security_code . '". style="display: inline-block; background-color: #D67F2E; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Réinitialiser votre mot de passe</a>
                                                                 </p>
                                                                 <p>Si vous n\'avez pas initié cette demande, veuillez ignorer cet e-mail.</p>
                                                                 <p>Merci,</p>

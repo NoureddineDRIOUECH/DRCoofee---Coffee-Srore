@@ -6,16 +6,22 @@ require_once '../connectDB.php';
 if (isset($_SESSION['user'])) {
     $userId = $_SESSION['user']->id;
 
-    $cartItemsQuery = $database->prepare("SELECT  produits.imageType, produits.image, produits.idProduit, produits.nomProduit, produits.prixProduit, paniers.quantite FROM paniers
+    $cartItemsQuery = $database->prepare("SELECT  produits.imageType, produits.image, produits.idProduit, produits.nomProduit, produits.prixProduit, paniers.quantite, paniers.idPanier FROM paniers
         INNER JOIN produits ON paniers.idProduit = produits.idProduit
         WHERE paniers.userID = :userId");
     $cartItemsQuery->bindParam(':userId', $userId, PDO::PARAM_INT);
     $cartItemsQuery->execute();
     $cartItems = $cartItemsQuery->fetchAll(PDO::FETCH_ASSOC);
     $total = 0;
-    foreach ($cartItems as $item) {
-        $getFile = "data:" . $item['imageType'] . ";base64," . base64_encode($item["image"]);
-        echo ' 
+    $items = [];
+    $i = 0;
+    if (empty($cartItems)) {
+        echo '<div class="empty-cart-message">Votre panier est vide.</div>';
+    } else {
+        foreach ($cartItems as $item) {
+            $items[$i] = ['nomProduit' => $item['nomProduit']];
+            $getFile = "data:" . $item['imageType'] . ";base64," . base64_encode($item["image"]);
+            echo ' 
                 <div class="cart-item" data-product-id="' . $item['idProduit'] . '">
                     <img src="' . $getFile . '" alt="produit dans votre panier" />
                     <div class="item-details">
@@ -23,21 +29,23 @@ if (isset($_SESSION['user'])) {
                         <p class="item-price">$' . $item['prixProduit'] . '</p>
                         <div class="item-actions">
                             <div class="qute">
-                                <button>-</button>
+                                <button onclick="moins(' . $item['idPanier'] . ' , ' . $item['quantite'] . ')">-</button>
                                 <p style="display:inline">' . $item['quantite'] . '</p>
-                                <button>+</button>
+                                <button onclick="plus(' . $item['idPanier'] . ',' . $item['idProduit'] . ',' . $item['quantite'] . ')">+</button>
                             </div>
-                            <button class="remove-item" onclick="removeItem(' . $item['idProduit'] . ')">Retirer</button>
+                            <button class="remove-item" onclick="removeItem(' . $item['idPanier'] . ')">Retirer</button>
                         </div>
                     </div>
                 </div>
                 <hr>';
-        $total += $item['prixProduit'] * $item['quantite'];
-    }
-    echo '</div>
+            $total += $item['prixProduit'] * $item['quantite'];
+            $i++;
+        }
+        echo '</div>
         </section>';
-    echo '<section class="total">
+        echo '<section class="total">
             <p>Total du Panier : <span class="total-price">$' . $total . '</span></p>
-            <button class="checkout-btn">Commander</button>
+            <button class="checkout-btn" onclick="commander(' . $total . ', ' . $userId . ',' . $item['idPanier'] . ')" >Commander</button>
           </section>';
+    }
 }

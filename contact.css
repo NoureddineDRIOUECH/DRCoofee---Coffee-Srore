@@ -1,6 +1,6 @@
 .contact {
     background-color: #FFF;
-    padding: 10px 0;
+    padding: 40px 0;
 }
 
 .contact-container {
@@ -18,37 +18,43 @@
     text-align: center;
 }
 
-form {
+main form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto;
 }
 
-label {
+main label {
     margin-bottom: 10px;
 }
 
-input, textarea {
+main input, textarea {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 textarea{
-    height: 200px;
+    height: 300px;
 }
 
 .contact-form button {
-    background-color: #FF7E12 ;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #fff;
+    background-color:#FF7E12;
     padding: 10px 20px;
     border: none;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
 }
 button:hover{
     background-color: #902713;
+}
+button{
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
 }

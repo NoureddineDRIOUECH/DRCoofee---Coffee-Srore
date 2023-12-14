@@ -1,14 +1,14 @@
-
+main{
+    padding: 10px;
+}
 #user-profile{
-    width: 90%;
     display: flex;
     justify-content: space-around;
+    align-content: center;
     flex-wrap: wrap;
-    background-color: #ff0000;
+    margin-top: 20px;
 }
 .profile-container {
-    max-width: 800px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -19,7 +19,7 @@ h3{
 h2, h3 {
     text-align: center;
 }
-.user-info, .purchase-history, .edit-profile, .logout-btn {
+.user-info, .purchase-history, .commande, .edit-profile, .logout-btn {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -33,36 +33,28 @@ h2, h3 {
     margin-bottom: 10px;
 }
 
-form {
+main form {
     display: flex;
     flex-direction: column;
 }
 
-label {
+main form label {
     margin-bottom: 5px;
 }
 
-input {
-    margin-bottom: 10px;
+main form input {
+    margin: 5x;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    margin-bottom: 5px;
+}
+button[name="update"]{
+    margin-top: 10px;
 }
 .logout-btn {
     text-align: center;
 }
-
-.error-message {
-        color: #ff0000;
-        margin-top: 10px;
-        text-align: center;
-    }
-
-.sucsses-message {
-        color: #D67F2E;
-        margin-top: 10px;
-        text-align: center;
-    }
 button{
     border: none;
     color: white;
@@ -70,4 +62,54 @@ button{
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
+}
+.error-message {
+    color: #FB3636;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.sucsses-message {
+    color: #26A310;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+
+
+/* Apply alternate background color to rows for better readability */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Style the hover effect for better interactivity */
+tbody tr:hover {
+    background-color: #e5e5e5;
+}
+div.commande{
+    width: 95%;
+    margin: auto;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    border-spacing: 5px;
+    margin: auto;
+    border-radius: 10px;
+  }
+  td,th{
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
+  }
+  th{
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: #FF7E12;
+  }
+td{
+    width: 30px;
 }

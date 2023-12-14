@@ -20,7 +20,7 @@ main{
     display: flex;
     gap: 20px;
     justify-content: space-evenly;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
 }
 
 

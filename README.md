@@ -41,7 +41,7 @@ Follow these instructions to get the project up and running on your local machin
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/NoureddineDRIOUECH/DRCoofee---Coffee-Srore.git
     cd DRCoffee
     ```
 
